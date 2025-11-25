@@ -8,8 +8,19 @@ pipeline {
     }
 
     stage('Shell') {
-      steps {
-        sh 'ls -la'
+      parallel {
+        stage('Shell') {
+          steps {
+            sh 'ls -la'
+          }
+        }
+
+        stage('echo') {
+          steps {
+            sh 'echo \'hello world\''
+          }
+        }
+
       }
     }
 

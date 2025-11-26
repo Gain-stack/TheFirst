@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Checkout') {
       steps {
-        git(url: 'https://github.com/Gain-stack/TheFirst', branch: 'dev')
+        git(url: 'https://github.com/Gain-stack/TheFirst', branch: 'master')
       }
     }
 
@@ -21,6 +21,12 @@ pipeline {
           }
         }
 
+      }
+    }
+
+    stage('Build') {
+      steps {
+        sh 'docker build .'
       }
     }
 
